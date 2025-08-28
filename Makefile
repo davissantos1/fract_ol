@@ -1,8 +1,8 @@
 # Variables
 
 CC= cc
-CFLAGS= -Wall -Wextra -Werror -Wpedantic -Iincludes -Lminilibx-linux -lmlx -lX11 -lXext -lm -lz
-LDFLAGS= -Lminilibx-linux -lmlx -lX11 -lXext -lm -lz
+CFLAGS= -Wall -Wextra -Werror -Wpedantic -Iincludes -Ilibft
+LDFLAGS= -lXext -lX11 -lm -lz
 SRC= src/main.c
 OBJ= $(SRC:.c=.o)
 NAME= fract_ol
