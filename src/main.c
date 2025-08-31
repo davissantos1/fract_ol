@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/31 14:11:52 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/31 16:45:10 by dasimoes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fract_ol.h"
 
 int	print_error(t_gc *gc)
@@ -44,10 +56,9 @@ int	main(void)
 		return (print_error(gc));
 	ctx->mlx = mlx_init();
 	ctx->window = mlx_new_window(ctx->mlx, 1920, 1080, "I fucking work");
-	ctx->img = mlx_new_image(ctx->mlx, 1080, 1080);
+	ctx->img = mlx_new_image(ctx->mlx, 1920, 1080);
 	ctx->addr = mlx_get_data_addr(ctx->img, &ctx->bpp, &ctx->ll, &ctx->endian);
-	pixel_put(ctx, 5, 5, 0x00FF0000);
 	mlx_put_image_to_window(ctx->mlx, ctx->window, ctx->img, 0, 0);
-	mlx_loop(ctx->mlx);	
+	mlx_loop(ctx->mlx);
 	return (0);
 }	
