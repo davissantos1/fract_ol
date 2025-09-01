@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 14:11:52 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/31 16:45:10 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/31 22:04:11 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,15 @@ void	pixel_put(t_ctx *ctx, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+int close_window(int keycode, t_ctx *ctx)
+{
+	if (keycode == 65307)
+		mlx_destroy_window(ctx->mlx, ctx->window);
+	else
+		ft_putnbr_fd(keycode, 1);
+	return (0);
+}
+
 int	main(void)
 {
 	t_gc	*gc;
@@ -56,9 +65,14 @@ int	main(void)
 		return (print_error(gc));
 	ctx->mlx = mlx_init();
 	ctx->window = mlx_new_window(ctx->mlx, 1920, 1080, "I fucking work");
-	ctx->img = mlx_new_image(ctx->mlx, 1920, 1080);
-	ctx->addr = mlx_get_data_addr(ctx->img, &ctx->bpp, &ctx->ll, &ctx->endian);
-	mlx_put_image_to_window(ctx->mlx, ctx->window, ctx->img, 0, 0);
+	if (!mlx_hook(ctx->window, 2, 1L<<0, close_window, ctx))
+	{
+		mlx_destroy_display(ctx->mlx);
+		return (0);
+	}
+	//ctx->img = mlx_new_image(ctx->mlx, 1920, 1080);
+	//ctx->addr = mlx_get_data_addr(ctx->img, &ctx->bpp, &ctx->ll, &ctx->endian);
+	//mlx_put_image_to_window(ctx->mlx, ctx->window, ctx->img, 0, 0);
 	mlx_loop(ctx->mlx);
 	return (0);
 }	
