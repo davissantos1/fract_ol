@@ -3,9 +3,9 @@
 CC= cc
 CFLAGS= -Wall -Wextra -Werror -Wpedantic -Iincludes -Ilibft
 LDFLAGS= -lXext -lX11 -lm -lz
-SRC= src/main.c
+SRC= src/fractol.c src/render.c src/events.c src/str_utils.c src/struct_utils.c src/mlx_utils.c
 OBJ= $(SRC:.c=.o)
-NAME= fract_ol
+NAME= fractol
 LIBFT_DIR= libft
 LIBFT= $(LIBFT_DIR)/libft.a
 MINILIBX_DIR= minilibx-linux

@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasimoes <dasimoes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/31 17:54:08 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/09/01 22:56:28 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/09/02 20:59:07 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/09/03 20:16:18 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "fractol.h"
 
-int	create_trgb(int t, int r, int g, int b)
+void	pixel_put(t_mlx *mlx, int x, int y, int color)
 {
-	if (t < 0 || t > 255 || r < 0 || r > 255)
-		return (-1);
-	if (g < 0 || g > 255 || b < 0 || b > 255)
-		return (-1);
-	return (t << 24 | r << 16 | g << 8 | b);
+	char	*dst;
+
+	dst = mlx->addr + (y * mlx->line + x * (mlx->bpp / 8));
+	*(unsigned int*)dst = color;
 }
