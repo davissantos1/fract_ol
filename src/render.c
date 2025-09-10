@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 18:15:46 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/09/07 18:54:42 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/09/10 19:05:18 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	compute_fractol(int x, int y, t_fractol *f)
 	float	cx;
 	float	cy;
 
-	cx =  f->min_x + x * (f->max_x - f->min_x) / WIDTH;
-	cy =  f->min_y + y * (f->max_y - f->min_y) / HEIGHT;
+	cx = f->min_x + x * (f->max_x - f->min_x) / WIDTH;
+	cy = f->min_y + y * (f->max_y - f->min_y) / HEIGHT;
 	if (!ft_strncmp(f->name, "julia", 5))
 		iterations = iterate_julia(cx, cy, f);
 	else if (!ft_strncmp(f->name, "mandelbrot", 10))
@@ -35,7 +35,7 @@ int	compute_fractol(int x, int y, t_fractol *f)
 
 void	render_fractol(t_mlx *mlx, t_fractol *f)
 {
-	int color;
+	int	color;
 	int	x;
 	int	y;
 

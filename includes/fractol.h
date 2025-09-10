@@ -1,26 +1,38 @@
-		#ifndef FRACTOL_H
-#define FRACTOL_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 19:20:33 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/09/10 19:24:43 by dasimoes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
 // External includes
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <unistd.h>
-#include <errno.h>
-#include <math.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <string.h>
+# include <unistd.h>
+# include <errno.h>
+# include <math.h>
 
 // Local includes
-#include "mlx.h"
-#include "libft.h"
+# include "mlx.h"
+# include "libft.h"
 
 // Macros
-#define WIDTH 1080
-#define HEIGHT 1080
+# define WIDTH 1080
+# define HEIGHT 1080
 
 // Structs
-typedef struct	s_fractol
+typedef struct s_fractol
 {
-	char 		*name;
+	char		*name;
 	int			colors[256];
 	int			iteration;
 	int			offset;
@@ -32,9 +44,9 @@ typedef struct	s_fractol
 	float		max_y;
 	float		center_x;
 	float		center_y;
-} t_fractol;
+}	t_fractol;
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void		*init;
 	void		*win;
@@ -45,21 +57,21 @@ typedef struct	s_mlx
 	int			end;
 	t_gc		*garbage;
 	t_fractol	*fractol;
-} t_mlx;
+}	t_mlx;
 
 struct s_argb
 {
-	unsigned char b;
-	unsigned char g;
-	unsigned char r;
-	unsigned char a;
+	unsigned char	b;
+	unsigned char	g;
+	unsigned char	r;
+	unsigned char	a;
 };
 
 // Unions
 typedef union u_argb
 {
-	int	value;
-	struct s_argb part;
+	int				value;
+	struct s_argb	part;
 }	t_argb;
 
 // Prototypes
@@ -73,7 +85,7 @@ int			is_valid(char *str);
 int			close_cross(t_mlx *mlx);
 int			pan_window(int keycode, t_mlx *mlx);
 void		build_palette(int *palette, int size);
-t_fractol 	*set_fractol(t_gc *gc, char **av);
+t_fractol	*set_fractol(t_gc *gc, char **av);
 int			start_fractol(char **av);
 void		render_fractol(t_mlx *mlx, t_fractol *f);
 int			compute_fractol(int x, int y, t_fractol *f);

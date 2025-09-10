@@ -1,7 +1,7 @@
 # Variables
 
 CC= cc
-CFLAGS= -Wall -Wextra -Werror -Wpedantic -Iincludes -Ilibft
+CFLAGS= -Wall -Wextra -Werror -Wpedantic -Iincludes -Ilibft -O3
 LDFLAGS= -lXext -lX11 -lm -lz
 SRC= src/fractol.c src/render.c src/keys.c src/buttons.c src/iteration.c src/misc_utils.c src/struct_utils.c src/mlx_utils.c
 OBJ= $(SRC:.c=.o)
@@ -30,7 +30,8 @@ $(LIBFT):
 
 $(MINILIBX):
 	@echo "📚 ${BLUE}Compiling:${RESET} minilibx"
-	@$(MAKE) -C $(MINILIBX_DIR)
+	@tar -xf ./minilibx-linux.tgz
+	@$(MAKE) -C $(MINILIBX_DIR) -s
 
 $(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
 	@echo "💻 ${GREEN}Building:${RESET} ${NAME}"
@@ -53,6 +54,7 @@ clean:
 fclean: clean
 	@echo "💣 ${YELLOW}Cleaning: ${RESET}everything"
 	@rm -rf $(NAME)
+	@rm -rf $(MINILIBX_DIR)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all

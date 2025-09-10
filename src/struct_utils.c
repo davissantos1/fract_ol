@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 16:45:31 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/09/10 18:32:10 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/09/10 19:09:38 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_mlx	*set_mlx(t_gc *gc, t_fractol *f)
 	mlx->win = mlx_new_window(mlx->init, WIDTH, HEIGHT, f->name);
 	if (!mlx->win)
 		return (NULL);
-	mlx->img= mlx_new_image(mlx->init, WIDTH, HEIGHT);
+	mlx->img = mlx_new_image(mlx->init, WIDTH, HEIGHT);
 	if (!mlx->img)
 		return (NULL);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->line, &mlx->end);
@@ -49,7 +49,7 @@ t_fractol	*set_fractol(t_gc *gc, char **av)
 	fractol->max_y = 1.5;
 	fractol->center_x = (fractol->min_x + fractol->max_x) / 2;
 	fractol->center_y = (fractol->min_y + fractol->max_y) / 2;
-	fractol->iteration = 150;
+	fractol->iteration = 1000;
 	fractol->offset = 0;
 	if (!ft_strncmp(fractol->name, "julia", 5))
 	{
@@ -61,10 +61,10 @@ t_fractol	*set_fractol(t_gc *gc, char **av)
 
 void	build_palette(int *palette, int size)
 {
-	int	i;
+	t_argb	color;
+	int		i;
 
 	i = 0;
-	t_argb	color;
 	while (i < size)
 	{
 		color.part.a = 255;
