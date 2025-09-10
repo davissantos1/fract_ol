@@ -1,16 +1,22 @@
-/*
-* How to square a complex number?
-* (x + yi)^2 = (x + yi)*(x + yi)
-* x*x - y*y + 2xyi
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   iteration.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 17:52:38 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/09/10 18:26:57 by dasimoes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fractol.h"
 
 int	iterate_julia(float cx, float cy, t_fractol *f)
 {
-	float	tmp_x; // f(z) = z * z + c
+	float	tmp_x;
 	float	tmp_y;
-	float	zx; 
+	float	zx;
 	float	zy;
 	int		i;
 
@@ -30,9 +36,9 @@ int	iterate_julia(float cx, float cy, t_fractol *f)
 
 int	iterate_mandelbrot(float cx, float cy, t_fractol *f)
 {
-	float	tmp_x; // f(z) = z * z + c
+	float	tmp_x;
 	float	tmp_y;
-	float	zx; 
+	float	zx;
 	float	zy;
 	int		i;
 
@@ -56,7 +62,7 @@ int	iterate_ship(float cx, float cy, t_fractol *f)
 {
 	float	tmp_x;
 	float	tmp_y;
-	float	zx; 
+	float	zx;
 	float	zy;
 	int		i;
 

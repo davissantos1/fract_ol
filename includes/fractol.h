@@ -1,4 +1,4 @@
-#ifndef FRACTOL_H
+		#ifndef FRACTOL_H
 #define FRACTOL_H
 
 // External includes
@@ -15,7 +15,7 @@
 
 // Macros
 #define WIDTH 1080
-#define HEIGHT 800
+#define HEIGHT 1080
 
 // Structs
 typedef struct	s_fractol
@@ -23,6 +23,7 @@ typedef struct	s_fractol
 	char 		*name;
 	int			colors[256];
 	int			iteration;
+	int			offset;
 	float		julia_x;
 	float		julia_y;
 	float		min_x;
@@ -81,9 +82,8 @@ int			iterate_mandelbrot(float cx, float cy, t_fractol *f);
 int			iterate_ship(float cx, float cy, t_fractol *f);
 void		horizontal_pan(int keycode, t_mlx *mlx);
 void		vertical_pan(int keycode, t_mlx *mlx);
-int			hook_mouse(int mx, int my, t_mlx *mlx);
-int			hook_wheel(int button, t_mlx *mlx);
-void		zoom(t_fractol *f, float factor);
+int			hook_mouse(int button, int x, int y, t_mlx *mlx);
+int			point_zoom(t_fractol *f, int mx, int my, float factor);
 float		ft_atof(char *s);
 float		ft_abs(float num);
 

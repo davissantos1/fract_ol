@@ -20,59 +20,38 @@ int	close_cross(t_mlx *mlx)
 	return (1);
 }
 
-void	zoom(t_fractol *f, float factor)
+int	point_zoom(t_fractol *f, int mx, int my, float factor)
 {
-	float	width;
-	float	height;
-
-	width = (f->max_x - f->min_x) * factor;
-	height = (f->max_y - f->min_y) * factor;
-	if (factor < 1)
-	{
-		f->min_x = f->center_x - width / 2;
-		f->max_x = f->center_x + width / 2;
-		f->min_y = f->center_y - height / 2;
-		f->max_y = f->center_y + height / 2;
-	}
-	else
-	{
-		f->min_x = f->center_x - width / 2;
-		f->max_x = f->center_x + width / 2;
-		f->min_y = f->center_y - height / 2;
-		f->max_y = f->center_y + height / 2;
-	}
-}
-
-int	hook_mouse(int mx, int my, t_mlx *mlx)
-{
-	float		factor;
+	float		fractal_x;
+	float		fractal_y;
 	float		width;
 	float		height;
-	t_fractol	*f;
 
-	factor = 0.95;
-	f = mlx->fractol;
+	fractal_x = f->min_x + (mx / (float)WIDTH) * (f->max_x - f->min_x);
+	fractal_y = f->min_y + (my / (float)HEIGHT) * (f->max_y - f->min_y);
 	width = (f->max_x - f->min_x) * factor;
 	height = (f->max_y - f->min_y) * factor;
-	f->min_x = mx - width / 2;
-	f->max_x = mx + width / 2;
-	f->min_y = my - height / 2;
-	f->max_y = my + height / 2;
+	f->min_x = fractal_x - width / 2;
+	f->max_x = fractal_x + width / 2;
+	f->min_y = fractal_y - height / 2;
+	f->max_y = fractal_y + height / 2;
 	f->center_x = mx;
 	f->center_y = my;
 	return (0);
 }
 
-int	hook_wheel(int button, t_mlx *mlx)
+int	hook_mouse(int button, int x, int y, t_mlx *mlx)
 {
+	if (!mlx || !mlx->fractol)
+		return (0);
 	if (button == 4)
 	{
-		zoom(mlx->fractol, 0.95);
+		point_zoom(mlx->fractol, x, y, 0.95);
 		render_fractol(mlx, mlx->fractol);
 	}
-	if (button == 5)
+	else if (button == 5)
 	{
-		zoom(mlx->fractol, 1.05);
+		point_zoom(mlx->fractol, x, y, 1.05);
 		render_fractol(mlx, mlx->fractol);
 	}
 	return (0);

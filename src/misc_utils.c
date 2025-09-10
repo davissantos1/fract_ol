@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   misc_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:59:35 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/09/03 20:14:26 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/09/10 18:21:50 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	arg_error(int type)
 	return (1);
 }
 
-int func_error(t_gc *gc)
+int	func_error(t_gc *gc)
 {
 	gc_free_all(gc);
 	perror("Error: ");
@@ -50,6 +50,10 @@ int	is_valid(char *str)
 	i = -1;
 	while (str[++i])
 	{
+		if (i == 0 && (str[i] == '+' || str[i] == '-'))
+			i++;
+		if ((i == 1 || i == 2) && str[i] == '.')
+			i++;
 		if (!ft_isdigit(str[i]))
 			return (0);
 	}
@@ -66,7 +70,7 @@ float	ft_abs(float num)
 float	ft_atof(char *s)
 {
 	int		i;
-	int		point;
+	float	point;
 	float	whole;
 	float	decimal;
 
