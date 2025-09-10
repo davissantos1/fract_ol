@@ -19,6 +19,7 @@ int	arg_error(int type)
 		ft_putstr_fd("You must use it like this:\n", 1);
 		ft_putstr_fd("1- ./fractol mandelbrot\n", 1);
 		ft_putstr_fd("2- ./fractol julia <x value> <y value>\n", 1);
+		ft_putstr_fd("3- ./fractol ship\n", 1);
 	}
 	if (type == 2)
 	{
@@ -30,6 +31,7 @@ int	arg_error(int type)
 		ft_putstr_fd("You had a typo, use one of these:\n", 1);
 		ft_putstr_fd("1- ./fractol mandelbrot\n", 1);
 		ft_putstr_fd("2- ./fractol julia <x value> <y value>\n", 1);
+		ft_putstr_fd("3- ./fractol ship\n", 1);
 	}
 	return (1);
 }
@@ -53,4 +55,38 @@ int	is_valid(char *str)
 	}
 	return (1);
 }
-		
+
+float	ft_abs(float num)
+{
+	if (num < 0)
+		return (-num);
+	return (num);
+}
+
+float	ft_atof(char *s)
+{
+	int		i;
+	int		point;
+	float	whole;
+	float	decimal;
+
+	i = 0;
+	point = 10;
+	decimal = 0;
+	whole = (float)ft_atoi(s);
+	while (s[i] != '.' && s[i])
+		i++;
+	if (s[i] == '.')
+	{
+		i++;
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			decimal += (s[i] - '0') / point;
+			point *= 10;
+			i++;
+		}
+	}
+	if (whole < 0)
+		return (whole - decimal);
+	return (whole + decimal);
+}

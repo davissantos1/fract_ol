@@ -20,6 +20,8 @@ int	main(int ac, char **av)
 	{
 		if (!ft_strncmp(av[1], "mandelbrot", 10) && ac == 2)
 			res = start_fractol(av + 1);
+		else if (!ft_strncmp(av[1], "ship", 4) && ac == 2)
+			res = start_fractol(av + 1);
 		else if (!ft_strncmp(av[1], "julia", 5) && ac == 4)
 		{
 			if (is_valid(av[2]) && is_valid(av[3]))
