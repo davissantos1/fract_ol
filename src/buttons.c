@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   buttons.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 21:00:22 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/09/07 14:24:01 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/09/10 20:24:39 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	close_cross(t_mlx *mlx)
 {
+	mlx_destroy_image(mlx->init, mlx->img);
 	mlx_destroy_window(mlx->init, mlx->win);
+	mlx_destroy_display(mlx->init);
 	gc_free_all(mlx->garbage);
 	exit(1);
 	return (1);

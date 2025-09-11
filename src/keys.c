@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 18:20:19 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/09/10 18:21:18 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/09/10 20:23:47 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ int	hook_keys(int keycode, t_mlx *mlx)
 {
 	if (keycode == 0xff1b)
 	{
+		mlx_destroy_image(mlx->init, mlx->img);
 		mlx_destroy_window(mlx->init, mlx->win);
+		mlx_destroy_display(mlx->init);
 		gc_free_all(mlx->garbage);
 		exit(1);
 	}

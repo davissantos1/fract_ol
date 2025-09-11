@@ -12,7 +12,7 @@ MINILIBX_DIR= minilibx-linux
 MINILIBX= $(MINILIBX_DIR)/libmlx.a
 
 # Makeflags
-MAKEFLAGS += --no-print-directory
+MAKEFLAGS += --no-print-directory -s
 
 # Colors
 RED := \033[31m
@@ -31,7 +31,7 @@ $(LIBFT):
 $(MINILIBX):
 	@echo "📚 ${BLUE}Compiling:${RESET} minilibx"
 	@tar -xf ./minilibx-linux.tgz
-	@$(MAKE) -C $(MINILIBX_DIR) -s
+	@$(MAKE) -C $(MINILIBX_DIR)
 
 $(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
 	@echo "💻 ${GREEN}Building:${RESET} ${NAME}"
@@ -50,6 +50,7 @@ clean:
 	@rm -rf $(OBJ)
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@echo "🧹 ${YELLOW}Cleaning: ${RESET}libft objects"
+	@rm -rf $(MINILIBX_DIR)
 
 fclean: clean
 	@echo "💣 ${YELLOW}Cleaning: ${RESET}everything"

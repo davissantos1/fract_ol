@@ -6,7 +6,7 @@
 /*   By: dasimoes <dasimoes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 14:11:52 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/09/10 18:28:37 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/09/10 23:00:10 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	main(int ac, char **av)
 
 	if (ac == 2 || ac == 4)
 	{
-		if (!ft_strncmp(av[1], "mandelbrot", 10) && ac == 2)
+		if (!ft_strncmp(av[1], "mandelbrot", 11) && ac == 2)
 			res = start_fractol(av + 1);
-		else if (!ft_strncmp(av[1], "ship", 4) && ac == 2)
+		else if (!ft_strncmp(av[1], "ship", 5) && ac == 2)
 			res = start_fractol(av + 1);
-		else if (!ft_strncmp(av[1], "julia", 5) && ac == 4)
+		else if (!ft_strncmp(av[1], "julia", 6) && ac == 4)
 		{
 			if (is_valid(av[2]) && is_valid(av[3]))
 				res = start_fractol(av + 1);

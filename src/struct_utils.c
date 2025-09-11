@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 16:45:31 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/09/10 19:09:38 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/09/10 20:38:49 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_fractol	*set_fractol(t_gc *gc, char **av)
 	fractol->max_y = 1.5;
 	fractol->center_x = (fractol->min_x + fractol->max_x) / 2;
 	fractol->center_y = (fractol->min_y + fractol->max_y) / 2;
-	fractol->iteration = 1000;
+	fractol->iteration = 150;
 	fractol->offset = 0;
 	if (!ft_strncmp(fractol->name, "julia", 5))
 	{

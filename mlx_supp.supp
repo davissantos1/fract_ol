@@ -1,0 +1,105 @@
+{
+   MiniLibX_mlx_init_136_bytes
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:mlx_init
+}
+
+{
+   MiniLibX_XOpenDisplay_strings
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*strdup
+   fun:XOpenDisplay
+   obj:*libX11*
+}
+
+{
+   MiniLibX_XInitExtension
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:XInitExtension
+   obj:*libX11*
+}
+
+{
+   MiniLibX_XInternAtom
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:XInternAtom
+   obj:*libX11*
+}
+
+{
+   MiniLibX_XCreateGC
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:XCreateGC
+   obj:*libX11*
+}
+
+{
+   MiniLibX_xcb_connect
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:xcb_connect_to_fd
+   obj:*libxcb*
+}
+
+{
+   MiniLibX_XShmQueryVersion
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:XShmQueryVersion
+   obj:*libXext*
+}
+
+{
+   MiniLibX_XkbGetMap
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:XkbGetMap
+   fun:XkbKeycodeToKeysym
+   obj:*libX11*
+}
+
+{
+   MiniLibX_XOpenDisplay_structs
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:XOpenDisplay
+   obj:*libX11*
+}
+
+{
+   MiniLibX__XConnectXCB
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_XConnectXCB
+   obj:*libX11*
+}
+
+{
+   MiniLibX_XReadEvents_buffer
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_XReadEvents
+   obj:*libX11*
+}
+
+{
+   MiniLibX_XReply_buffer
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_XReply
+   obj:*libX11*
+}
+
+{
+   MiniLibX__XEnq_malloc
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_XEnq
+   obj:*libX11*
+}
