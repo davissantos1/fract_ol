@@ -26,19 +26,16 @@ int	point_zoom(t_fractol *f, int mx, int my, float factor)
 {
 	float		fractal_x;
 	float		fractal_y;
-	float		width;
-	float		height;
 
 	fractal_x = f->min_x + (mx / (float)WIDTH) * (f->max_x - f->min_x);
 	fractal_y = f->min_y + (my / (float)HEIGHT) * (f->max_y - f->min_y);
-	width = (f->max_x - f->min_x) * factor;
-	height = (f->max_y - f->min_y) * factor;
-	f->min_x = fractal_x - width / 2;
-	f->max_x = fractal_x + width / 2;
-	f->min_y = fractal_y - height / 2;
-	f->max_y = fractal_y + height / 2;
-	f->center_x = mx;
-	f->center_y = my;
+
+	f->min_x = fractal_x - (fractal_x - f->min_x) * factor;
+	f->max_x = fractal_x + (f->max_x - fractal_x) * factor;
+	f->min_y = fractal_y - (fractal_y - f->min_y) * factor;
+	f->max_y = fractal_y + (f->max_y - fractal_y) * factor;
+	f->center_x = (f->max_x - f->min_x) / 2;
+	f->center_y = (f->max_y - f->min_y) / 2;
 	return (0);
 }
 
