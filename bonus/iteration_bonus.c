@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iteration.c                                        :+:      :+:    :+:   */
+/*   iteration_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:52:38 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/09/10 18:58:13 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/09/11 20:02:12 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 int	iterate_julia(float cx, float cy, t_fractol *f)
 {

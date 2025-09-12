@@ -3,8 +3,10 @@
 CC= cc
 CFLAGS= -Wall -Wextra -Werror -Wpedantic -Iincludes -Ilibft -Iminilibx-linux -O3
 LDFLAGS= -lXext -lX11 -lm -lz
-SRC= src/fractol.c src/render.c src/keys.c src/buttons.c src/iteration.c src/misc_utils.c src/struct_utils.c src/mlx_utils.c
+SRC= mandatory/fractol.c mandatory/render.c mandatory/keys.c mandatory/buttons.c mandatory/iteration.c mandatory/misc_utils.c mandatory/struct_utils.c mandatory/mlx_utils.c
+SRC_BONUS= bonus/fractol_bonus.c bonus/render_bonus.c bonus/keys_bonus.c bonus/buttons_bonus.c bonus/iteration_bonus.c bonus/misc_utils_bonus.c bonus/struct_utils_bonus.c bonus/mlx_utils_bonus.c
 OBJ= $(SRC:.c=.o)
+OBJ_BONUS= $(SRC_BONUS:.c=.o)
 NAME= fractol
 LIBFT_DIR= libft
 LIBFT= $(LIBFT_DIR)/libft.a
@@ -20,6 +22,11 @@ GREEN := \033[32m
 YELLOW := \033[33m
 BLUE := \033[34m
 RESET := \033[0m
+
+# Bonus setting
+ifeq ($(findstring bonus,$(MAKECMDGOALS)),bonus)
+	SRC = $(SRC_BONUS)
+endif
 
 # Rules
 all: $(NAME)
@@ -48,6 +55,7 @@ debug: re
 clean:
 	@echo "🧹 ${YELLOW}Cleaning: ${RESET}project objects"
 	@rm -rf $(OBJ)
+	@rm -rf $(OBJ_BONUS)
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@echo "🧹 ${YELLOW}Cleaning: ${RESET}libft objects"
 	@rm -rf $(MINILIBX_DIR)
@@ -59,5 +67,7 @@ fclean: clean
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
+
+bonus: all
 
 .PHONY: all clean fclean re bonus debug

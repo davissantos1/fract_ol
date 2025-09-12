@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_utils.c                                     :+:      :+:    :+:   */
+/*   struct_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 16:45:31 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/09/10 20:38:49 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/09/11 20:04:33 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 t_mlx	*set_mlx(t_gc *gc, t_fractol *f)
 {
 	t_mlx	*mlx;
+	void	*ptr;
 
+	ptr = mlx_init();
+	gc_addptr(ptr, gc, GC_DEFAULT);
 	mlx = gc_malloc(sizeof(t_mlx), gc, GC_DEFAULT);
 	if (!mlx)
 		return (NULL);
-	mlx->init = mlx_init();
+	mlx->init = ptr;
 	if (!mlx->init)
 		return (NULL);
 	mlx->win = mlx_new_window(mlx->init, WIDTH, HEIGHT, f->name);
